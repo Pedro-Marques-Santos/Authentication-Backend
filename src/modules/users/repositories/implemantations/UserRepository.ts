@@ -1,3 +1,4 @@
+import { IUserRepositoryDTO } from "../../dtos/UserRepositoryDTOS";
 import { User } from "../../model/User";
 import { IUserRepository } from "../IUserRepository";
 
@@ -8,7 +9,7 @@ class UserRepository implements IUserRepository {
     this.allUsers = [];
   }
 
-  create({ name, email, password }: User): void {
+  create({ name, email, password }: IUserRepositoryDTO): void {
     const user = new User();
 
     user.name = name;
@@ -16,6 +17,12 @@ class UserRepository implements IUserRepository {
     user.password = password;
 
     this.allUsers.push(user);
+  }
+
+  list(): User[] {
+    const list = this.allUsers;
+    
+    return list;
   }
 
 }

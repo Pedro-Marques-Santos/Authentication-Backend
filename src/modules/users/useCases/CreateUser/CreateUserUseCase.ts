@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe'
-import { IUserRepositoryDTO } from '../../dtos/UserRepositoryDtos'
+import { IUserRepositoryDTO } from '../../dtos/UserRepositoryDTOS'
 import { IUserRepository } from '../../repositories/IUserRepository'
 
 @injectable()
