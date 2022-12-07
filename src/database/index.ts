@@ -6,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then(options => {
   const newOptions = options as IOptions;
-  newOptions.host = 'authenticationnode'; //Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
+  newOptions.host = 'database_authentication'; //Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
   createConnection({
     ...options,
   });

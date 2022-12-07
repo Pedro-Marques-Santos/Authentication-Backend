@@ -4,6 +4,8 @@ import "reflect-metadata"
 
 import "./shared/index";
 
+import "./database";
+
 import { router } from "./routes";
 
 const app = express();
