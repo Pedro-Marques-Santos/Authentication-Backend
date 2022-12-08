@@ -16,7 +16,7 @@ class CreateUserUseCase {
     const exist = await this.userRepository.findByEmail(email);
 
     if( exist === true ) {
-      throw new AppError("Email já registrado!", 401);
+      throw new AppError("Email already registered!", 401);
     }
 
     await this.userRepository.create({ name, email, password });

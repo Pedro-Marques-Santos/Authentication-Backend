@@ -7,8 +7,13 @@ interface IUserRepositoryDTO {
 }
 
 interface UserVerifyDTO {
-  exist: boolean;
+  password: boolean;
   user?: User;
 }
 
-export { IUserRepositoryDTO, UserVerifyDTO }
+interface UserToken {
+  user: IUserRepositoryDTO;
+  token: string;
+}
+
+export { IUserRepositoryDTO, UserVerifyDTO, UserToken }

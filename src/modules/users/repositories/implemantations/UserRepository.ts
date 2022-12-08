@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository {
   async loginUser(email: string, password: string): Promise<UserVerifyDTO> {
 
     let userVerify = {
-      exist: false
+      password: false
     } as UserVerifyDTO;
 
     const users = await this.userRepository.find();
@@ -48,7 +48,7 @@ class UserRepository implements IUserRepository {
       if(user.email === email && user.password === password) {
         userVerify = {
           ...userVerify,
-          exist: true,
+          password: true,
           user: user
         }
       }
