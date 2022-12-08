@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe'
+import { AppError } from '../../../../errors/AppErrors';
 import { IUserRepositoryDTO } from '../../dtos/UserRepositoryDTOS'
 import { IUserRepository } from '../../repositories/IUserRepository'
 
@@ -10,9 +11,15 @@ class CreateUserUseCase {
     private userRepository: IUserRepository
   ) { }
 
-  execute({ name, password, email }: IUserRepositoryDTO): void {
+  async execute({ name, password, email }: IUserRepositoryDTO): Promise<void> {
 
-    this.userRepository.create({ name, email, password });
+    const exist = await this.userRepository.findByEmail(email);
+
+    if( exist === true ) {
+      throw new AppError("Email já registrado!", 401);
+    }
+
+    await this.userRepository.create({ name, email, password });
 
   }
 
