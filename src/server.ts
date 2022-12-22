@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from 'express'
 
 import express from "express";
 
+import cors from "cors";
+
 import "reflect-metadata"
 
 import "./shared/index";
@@ -15,6 +17,14 @@ import { router } from "./routes";
 import { AppError } from './errors/AppErrors';
 
 const app = express();
+
+const corsOptions = {
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

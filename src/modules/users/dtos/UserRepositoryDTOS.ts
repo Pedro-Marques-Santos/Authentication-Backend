@@ -6,14 +6,18 @@ interface IUserRepositoryDTO {
   email: string
 }
 
+interface IProfileUserDTO {
+  email: string;
+}
+
 interface UserVerifyDTO {
   password: boolean;
   user?: User;
 }
 
 interface UserToken {
-  user: IUserRepositoryDTO;
+  name: string;
   token: string;
 }
 
-export { IUserRepositoryDTO, UserVerifyDTO, UserToken }
+export { IUserRepositoryDTO, UserVerifyDTO, UserToken, IProfileUserDTO }

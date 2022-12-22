@@ -30,7 +30,7 @@ class LoginUserUseCase {
     const token = jwt.sign(
       {
         email: userLogin.user.email,
-        password: userLogin.user.password 
+        password: userLogin.user.password,
       },
       secretKey,
       {
@@ -40,7 +40,7 @@ class LoginUserUseCase {
     );
 
     const userToken = {
-      user: userLogin.user,
+      name: userLogin.user.name,
       token: token
     } as UserToken;
     

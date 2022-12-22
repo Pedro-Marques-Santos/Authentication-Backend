@@ -1,6 +1,8 @@
-import { IUserRepositoryDTO, UserVerifyDTO } from "../../dtos/UserRepositoryDTOS";
+import { IProfileUserDTO, IUserRepositoryDTO, UserVerifyDTO } from "../../dtos/UserRepositoryDTOS";
 import { User } from "../../entities/User";
 import { IUserRepository } from "../IUserRepository";
+
+import jwt from 'jsonwebtoken';
 
 import { getRepository, Repository } from "typeorm"
 
@@ -55,6 +57,14 @@ class UserRepository implements IUserRepository {
     });
 
     return userVerify
+  }
+
+  async profileUser(token: string): Promise<IProfileUserDTO> {
+
+    let tokenData = jwt.decode(token) as IProfileUserDTO;
+
+    return tokenData;
+
   }
 
 }
